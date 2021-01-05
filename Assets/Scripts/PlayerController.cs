@@ -28,6 +28,11 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(LoadScene(3));
             DisplayYouLose();
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0, LoadSceneMode.Single);
+        }
     }
 
     void FixedUpdate()
