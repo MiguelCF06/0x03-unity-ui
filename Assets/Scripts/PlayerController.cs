@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public float speed = 1000f;
     public int health = 5;
+    public Text scoreText;
     private int score = 0;
     private Rigidbody rigidbody;
 
@@ -53,7 +55,7 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Pickup")
         {
             score += 1;
-            Debug.Log($"Score: {score}");
+            SetScoreText();
             Destroy(other.gameObject);
         }
 
@@ -67,5 +69,10 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("You win!");
         }
+    }
+
+    void SetScoreText()
+    {
+        scoreText.text = "Score: " + score;
     }
 }
