@@ -25,8 +25,8 @@ public class PlayerController : MonoBehaviour
     {
         if (health <= 0)
         {
+            StartCoroutine(LoadScene(3));
             DisplayYouLose();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
@@ -70,8 +70,15 @@ public class PlayerController : MonoBehaviour
 
         if (other.tag == "Goal")
         {
-            DisplayYouWin();            
+            StartCoroutine(LoadScene(3));
+            DisplayYouWin();
         }
+    }
+
+    IEnumerator LoadScene(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     void DisplayYouWin()
